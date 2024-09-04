@@ -6,6 +6,8 @@ import { store } from './app/store';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
+import Page_sign_in from "./pages/sign-in"
+import Page_user from "./pages/user"
 
 const container = document.getElementById('root');
 const root = createRoot(container);
@@ -15,9 +17,9 @@ root.render(
         <Provider store={store}>
             <Router>
                 <Routes>
-                    <Route path="" element={<App />} />
-                    <Route path="" />
-                    <Route path="" />
+                    <Route path="/" element={<App />} />
+                    <Route path="/sign_in" element={<Page_sign_in/> } />
+                    <Route path="/user/:id" element={<Page_user/> } />
                 </Routes>
             </Router>
      
