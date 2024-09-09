@@ -1,4 +1,5 @@
-﻿import Header from "../composants/header"
+﻿import React from 'react'
+import Header from "../composants/header"
 import Footer from "../composants/footer"
 import User from "../composants/user"
 
