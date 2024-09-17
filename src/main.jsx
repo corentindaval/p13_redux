@@ -18,8 +18,8 @@ root.render(
             <Router>
                 <Routes>
                     <Route path="/" element={<App />} />
-                    <Route path="/sign_in" element={<Page_sign_in/> } />
-                    <Route path="/user/:id" element={<Page_user/> } />
+                    <Route path="/login" element={<Page_sign_in/> } />
+                    <Route path="/profile/:id" element={<Page_user/> } />
                 </Routes>
             </Router>
      

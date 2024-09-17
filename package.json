@@ -17,6 +17,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-redux": "^8.1.3",
+    "react-router-dom": "^6.26.1",
     "react-scripts": "5.0.1",
     "swagger-ui-express": "^4.1.4",
     "vite": "^5.4.3",
@@ -28,6 +29,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "dev": "vite",
     "dev:server": "nodemon ./server/server.js",
     "populate-db": "node ./server/scripts/populateDatabase.js",
     "server": "node ./server/server.js"
@@ -51,6 +53,7 @@
     ]
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "vite": "^5.4.1"
   }
 }

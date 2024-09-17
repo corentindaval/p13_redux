@@ -21,6 +21,16 @@ body {
     background-color: #12002b;
 }
 
+.users {
+    padding-top: 0.1rem;
+    padding-bottom: 3rem;
+}
+
+.login {
+    padding-top: 0.1rem;
+    padding-bottom: 18rem;
+}
+
 .sr-only {
     border: 0 !important;
     clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
@@ -207,6 +217,7 @@ body {
     justify-content: center;
     border-top: 2px solid #ccc;
     padding: 2rem 0 1.5rem;
+
 }
 
 .footer-text {

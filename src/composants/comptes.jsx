@@ -1,4 +1,6 @@
 ﻿import React from 'react'
+import { useSelector } from 'react-redux'
+//const items = useSelector(selectItems)
 
 function Compte(props) {
     const { nom_compte,montant,description } = props;

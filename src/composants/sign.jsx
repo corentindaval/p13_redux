@@ -1,9 +1,15 @@
 ﻿import React from 'react'
+import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { addItemToUtilisateur } from '../features/utilisateurs/slice_utilisateurs.jsx'
+//const dispatch = useDispatch()
+//const items = useSelector(selectItems)
 
 function Sign() {
     return (
 
-        <main className="main bg-dark">
+        <main className="main bg-dark login">
             <section className="sign-in-content">
                 <i className="fa fa-user-circle sign-in-icon"></i>
                 <h1>Sign In</h1>
@@ -17,7 +23,7 @@ function Sign() {
                     <div className="input-remember">
                         <input type="checkbox" id="remember-me" /><label for="remember-me">Remember me</label>
                     </div>
-                    <a href="./user.html" class="sign-in-button">Sign In</a>
+                    <Link to="/profile/1" class="sign-in-button">Sign In</Link>
                     <button className="sign-in-button">Sign In</button>
                 </form>
             </section>
