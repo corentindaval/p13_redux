@@ -1,23 +1,14 @@
 ﻿
-//exemple utilisation local storage
-/*
-function init_list_niveaux() {
-    if (localStorage.getItem("listniveau") == null) {
-        const tabzonejeuinitial = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 3, 1, 1, 1, 1], [1, 1, 1, 1, 1, 2, 1, 1, 1, 1], [1, 1, 1, 1, 1, 2, 1, 1, 1, 1], [1, 1, 1, 2, 2, 2, 1, 1, 1, 1], [1, 1, 1, 2, 2, 2, 1, 1, 1, 1], [1, 1, 1, 1, 5, 1, 1, 1, 1, 1], [1, 1, 1, 1, 2, 1, 1, 1, 1, 1], [1, 1, 1, 1, 4, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]];
-        const tabzone2 = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 2, 2, 2, 3, 1, 1, 1], [1, 3, 1, 2, 2, 1, 1, 1, 3, 1], [1, 2, 1, 1, 5, 1, 1, 1, 2, 1], [1, 2, 2, 5, 2, 5, 2, 2, 2, 1], [1, 2, 2, 1, 2, 1, 1, 2, 2, 1], [1, 1, 1, 1, 4, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]];
-        const tabzone3 = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 2, 2, 1, 1, 1, 1, 3, 1], [1, 1, 2, 2, 2, 3, 1, 1, 2, 1], [1, 1, 2, 2, 1, 1, 1, 1, 2, 1], [1, 2, 2, 2, 1, 1, 1, 1, 2, 1], [1, 2, 1, 2, 1, 1, 1, 1, 2, 1], [1, 2, 2, 2, 5, 2, 5, 2, 2, 1], [1, 2, 2, 2, 1, 2, 1, 2, 2, 1], [1, 1, 1, 1, 1, 4, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]];
-        const tabzone4 = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 2, 1, 1, 1, 1, 3, 1], [1, 3, 1, 2, 1, 1, 1, 1, 2, 1], [1, 2, 2, 2, 2, 3, 1, 1, 2, 1], [1, 2, 1, 2, 1, 1, 1, 1, 2, 1], [1, 2, 2, 5, 2, 2, 2, 2, 2, 1], [1, 2, 1, 2, 1, 1, 1, 1, 2, 1], [1, 2, 2, 2, 5, 2, 5, 2, 2, 1], [1, 2, 2, 2, 1, 4, 1, 2, 2, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]];
-        liste_niveaux = [];
-        liste_niveaux.push(tabzonejeuinitial);
-        liste_niveaux.push(tabzone2);
-        liste_niveaux.push(tabzone3);
-        liste_niveaux.push(tabzone4);
-        localStorage.setItem("listniveau", sauv_listniveau(liste_niveaux));
+var list_db = [];
+function init_list_db() {
+    if (localStorage.getItem("db") == null) {
+         list_db = [[0,"Tony","Stark","tony@stark.com","password123"],[1,"Steve","Rogers","steve@rogers.com","password456"]];
+        localStorage.setItem("db", sauvegarde(list_db));
     } else {
-        liste_niveaux = charg_listniveau(localStorage.getItem("listniveau"));
+        list_db = charger(localStorage.getItem("db"));
     }
 }
-*/
+
 function sauvegarde(donnee) {
     var resultat = "";
     var tinit = false;
@@ -25,13 +16,13 @@ function sauvegarde(donnee) {
         if (tinit === false) {
             tinit = true;
         } else {
-            resultat += "/";
+            resultat += "#";
         }
         var nbelement = 0;
         element.forEach(function (selement) {
             resultat += selement;
             if (nbelement !== element.length - 1) {
-                resultat += ",";
+                resultat += "/";
             }
             nbelement += 1;
         });
@@ -45,10 +36,10 @@ function sauvegarde(donnee) {
 
 function charger(stockagelocal) {
     var resultat = [];
-    var lignes = stockagelocal.split("/");
+    var lignes = stockagelocal.split("#");
     lignes.forEach(function (element) {
         var contenuligne = [];
-        var contenuelement = element.split(",");
+        var contenuelement = element.split("/");
         contenuelement.forEach(function (selement) {
             contenuligne.push(selement);
         });
@@ -56,4 +47,18 @@ function charger(stockagelocal) {
     });
 
     return resultat;
+}
+
+function maj_db(id,nv_nom,nv_prenom) {
+    const db_utilisateur = charger(localStorage.getItem("db"));
+    var nv_db = [];
+    db_utilisateur.forEach(function (element) {
+        if (element[0] === id) {
+            var nv_data=[id,nv_nom,nv_prenom,element[3],element[4]]
+            nv_db.push(nv_data);
+        } else {
+            nv_db.push(element);
+        }
+    })
+    localStorage.setItem("db", sauvegarde(nv_db));
 }
