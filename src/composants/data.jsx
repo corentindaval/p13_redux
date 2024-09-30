@@ -2,7 +2,7 @@
 var list_db = [];
 function init_list_db() {
     if (localStorage.getItem("db") == null) {
-         list_db = [[0,"Tony","Stark","tony@stark.com","password123"],[1,"Steve","Rogers","steve@rogers.com","password456"]];
+        list_db = [[0, "Tony", "Stark", "tony@stark.com", "password123"], [1, "Steve", "Rogers", "steve@rogers.com", "password456"]];
         localStorage.setItem("db", sauvegarde(list_db));
     } else {
         list_db = charger(localStorage.getItem("db"));
@@ -48,13 +48,14 @@ function charger(stockagelocal) {
 
     return resultat;
 }
+export default charger
 
-function maj_db(id,nv_nom,nv_prenom) {
+function maj_db(id, nv_nom, nv_prenom) {
     const db_utilisateur = charger(localStorage.getItem("db"));
     var nv_db = [];
     db_utilisateur.forEach(function (element) {
         if (element[0] === id) {
-            var nv_data=[id,nv_nom,nv_prenom,element[3],element[4]]
+            var nv_data = [id, nv_nom, nv_prenom, element[3], element[4]]
             nv_db.push(nv_data);
         } else {
             nv_db.push(element);
@@ -62,3 +63,5 @@ function maj_db(id,nv_nom,nv_prenom) {
     })
     localStorage.setItem("db", sauvegarde(nv_db));
 }
+
+export default maj_db

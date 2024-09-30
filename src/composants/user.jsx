@@ -1,5 +1,6 @@
 ﻿import React from 'react'
-import Compte from"./comptes"
+import Compte from "./comptes"
+import Nom from"./nom"
 
 function User() {
     return (

@@ -1,5 +1,6 @@
-﻿import React from 'react'
+﻿import React, { useState} from 'react'
 import { Link } from 'react-router-dom'
+import {login }from "./interaction"
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { addItemToUtilisateur } from '../features/utilisateurs/slice_utilisateurs.jsx'
@@ -7,6 +8,25 @@ import { addItemToUtilisateur } from '../features/utilisateurs/slice_utilisateur
 //const items = useSelector(selectItems)
 
 function Sign() {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+
+    function changeUsername(e) {
+        setUsername(e.target.value);
+    }
+    function changePassword(e) {
+        setPassword(e.target.value);
+    }
+   async function signSubmit(e) {
+        e.preventDefault();
+        const data = {
+            "email": username,
+            "password":password
+            }
+       const res = await login(data);
+       console.log(res)
+    }
+
     return (
 
         <main className="main bg-dark login">
@@ -15,22 +35,24 @@ function Sign() {
                 <h1>Sign In</h1>
                 <form>
                     <div className="input-wrapper">
-                        <label for="username">Username</label><input type="text" id="username" />
+                        <label htmlFor="username">Username</label><input type="text" id="username" onChange={changeUsername} />
                     </div>
                     <div className="input-wrapper">
-                        <label for="password">Password</label><input type="password" id="password" />
+                        <label htmlFor="password">Password</label><input type="password" id="password" onChange={changePassword} />
                     </div>
                     <div className="input-remember">
-                        <input type="checkbox" id="remember-me" /><label for="remember-me">Remember me</label>
+                        <input type="checkbox" id="remember-me" /><label htmlFor="remember-me">Remember me</label>
                     </div>
-                    <Link to="/profile/1" class="sign-in-button">Sign In</Link>
-                    <button className="sign-in-button">Sign In</button>
+                    <Link to="/profile/1" className="sign-in-button">Sign In</Link>
+                    <button className="sign-in-button" id="sign_button" onClick={signSubmit } >Sign In</button>
                 </form>
             </section>
         </main>
-    )
 
+    )
 }
+
+
 
 export default Sign
 
