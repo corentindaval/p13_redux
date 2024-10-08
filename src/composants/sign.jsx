@@ -4,6 +4,7 @@ import {login }from "./interaction"
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { addItemToUtilisateur } from '../features/utilisateurs/slice_utilisateurs.jsx'
+import {isEmpty }from "./utils"
 //const dispatch = useDispatch()
 //const items = useSelector(selectItems)
 
@@ -25,6 +26,7 @@ function Sign() {
             }
        const res = await login(data);
        console.log(res)
+
     }
 
     return (
@@ -43,7 +45,7 @@ function Sign() {
                     <div className="input-remember">
                         <input type="checkbox" id="remember-me" /><label htmlFor="remember-me">Remember me</label>
                     </div>
-                    <Link to="/profile/1" className="sign-in-button">Sign In</Link>
+                    <Link to="/profile" className="sign-in-button">Sign In</Link>
                     <button className="sign-in-button" id="sign_button" onClick={signSubmit } >Sign In</button>
                 </form>
             </section>
