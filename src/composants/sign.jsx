@@ -5,27 +5,29 @@ import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { addItemToUtilisateur } from '../features/utilisateurs/slice_utilisateurs.jsx'
 import {isEmpty }from "./utils"
-//const dispatch = useDispatch()
-//const items = useSelector(selectItems)
+import { setToken } from '../features/token/token'
+
 
 function Sign() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    function changeUsername(e) {
+    function changeUsername(e) {//recup champ utilisateur
         setUsername(e.target.value);
     }
-    function changePassword(e) {
+    function changePassword(e) {//recup champ mot de passe
         setPassword(e.target.value);
     }
-   async function signSubmit(e) {
-        e.preventDefault();
+   async function signSubmit(e) {//action quand envoyer
+       e.preventDefault();
+       const dispatch = useDispatch();
         const data = {
             "email": username,
             "password":password
             }
        const res = await login(data);
        console.log(res)
+       dispatch(setToken(res))
 
     }
 
