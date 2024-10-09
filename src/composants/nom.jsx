@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux'
 
 function Nom(props) {
     const { changement } = props;
-    if (changement == true) {
+    if (changement === true) {
         return (
             <div>
              <h1>Welcome back<br />Tony Jarvis!</h1>

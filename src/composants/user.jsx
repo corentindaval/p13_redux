@@ -7,8 +7,7 @@ function User() {
 
         <main className="main bg-dark users">
             <div className="header">
-                <h1>Welcome back<br />Tony Jarvis!</h1>
-                <button className="edit-button">Edit Name</button>
+               <Nom changement:false/>
             </div>
             <h2 className="sr-only">Accounts</h2>
             <Compte nom_compte="Argent Bank Checking (x8349)" montant="$2,082.79" description="Available Balance" />
