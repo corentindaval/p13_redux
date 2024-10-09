@@ -1,7 +1,7 @@
 ﻿import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    value:"",
+    value: "",
 }
 
 export const token = createSlice({
@@ -9,10 +9,10 @@ export const token = createSlice({
     initialState,
     reducers: {
         setToken: (state, action) => {
-            state.value=action.payload
+            state.value = action.payload
         },
         emptyToken: (state) => {
-            state.value=""
+            state.value = ""
         }
     }
 })

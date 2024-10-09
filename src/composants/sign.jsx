@@ -4,31 +4,37 @@ import {login }from "./interaction"
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { addItemToUtilisateur } from '../features/utilisateurs/slice_utilisateurs.jsx'
-import {isEmpty }from "./utils"
+import { isEmpty } from "./utils"
 import { setToken } from '../features/token/token'
 
+
+
+//const items = useSelector(selectItems)
 
 function Sign() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    function changeUsername(e) {//recup champ utilisateur
+    function changeUsername(e) {
         setUsername(e.target.value);
     }
-    function changePassword(e) {//recup champ mot de passe
+    function changePassword(e) {
         setPassword(e.target.value);
     }
-   async function signSubmit(e) {//action quand envoyer
+   async function signSubmit(e) {
        e.preventDefault();
-       const dispatch = useDispatch();
+     //  const dispatch = useDispatch()
         const data = {
             "email": username,
             "password":password
             }
        const res = await login(data);
        console.log(res)
-       dispatch(setToken(res))
-
+       if (res.status == 200) {
+            // dispatch(setToken(res))
+           location.replace("/profile")
+       }
+     
     }
 
     return (
