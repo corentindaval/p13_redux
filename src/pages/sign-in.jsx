@@ -9,7 +9,7 @@ import Sign from "../composants/sign"
 function Page_sign_in() {
     return (
         <div>
-            <Header connecter="false" />
+            <Header />
             <Sign/>
             <Footer />
         </div>

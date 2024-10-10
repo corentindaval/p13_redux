@@ -8,7 +8,7 @@ import User from "../composants/user"
 function Page_user() {
     return (
         <div>
-            <Header connecter="true" />
+            <Header />
             <User/>
             <Footer />
         </div>

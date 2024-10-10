@@ -8,7 +8,7 @@ import Accueil from "../composants/accueil"
 function Page_accueil() {
     return (
         <div>
-            <Header connecter="false"/>
+            <Header />
             <Accueil/>
             <Footer/>
         </div>

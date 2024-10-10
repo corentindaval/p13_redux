@@ -19,4 +19,6 @@ export const token = createSlice({
 
 export const { setToken, emptyToken } = token.actions
 
+export const valeur_token = (state) => state.utilisateur.value
+
 export default token.reducer

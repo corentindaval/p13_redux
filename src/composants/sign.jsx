@@ -1,9 +1,7 @@
 ﻿import React, { useState} from 'react'
 import { Link } from 'react-router-dom'
 import {login }from "./interaction"
-import { useSelector } from 'react-redux'
-import { useDispatch } from 'react-redux'
-import { addItemToUtilisateur } from '../features/utilisateurs/slice_utilisateurs.jsx'
+import { useDispatch,useSelector } from 'react-redux'
 import { isEmpty } from "./utils"
 import { setToken } from '../features/token/token'
 
@@ -23,7 +21,7 @@ function Sign() {
     }
    async function signSubmit(e) {
        e.preventDefault();
-     //  const dispatch = useDispatch()
+      
         const data = {
             "email": username,
             "password":password
@@ -31,10 +29,14 @@ function Sign() {
        const res = await login(data);
        console.log(res)
        if (res.status == 200) {
-            // dispatch(setToken(res))
+        ajt_token(res)
            location.replace("/profile")
        }
      
+    }
+    function ajt_token(token) {
+        const dispatch = useDispatch()
+        dispatch(setToken(token));
     }
 
     return (
@@ -53,7 +55,6 @@ function Sign() {
                     <div className="input-remember">
                         <input type="checkbox" id="remember-me" /><label htmlFor="remember-me">Remember me</label>
                     </div>
-                    <Link to="/profile" className="sign-in-button">Sign In</Link>
                     <button className="sign-in-button" id="sign_button" onClick={signSubmit } >Sign In</button>
                 </form>
             </section>

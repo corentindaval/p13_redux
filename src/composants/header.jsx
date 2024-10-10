@@ -1,10 +1,22 @@
 ﻿import Logo from "../assets/argentBankLogo.png"
 import { Link } from 'react-router-dom'
 import React from 'react'
+import { emptyToken, valeur_token } from '../features/token/token'
+import { utilisateur_selectionner, emptyUtilisateur } from '../features/utilisateurs/utilisateurs';
+import { useDispatch,useSelector } from "react-redux";
 
-function Header(props) {
-    const { connecter } = props;
-    if (connecter == "true") {
+function Header() {
+    const val_token=useSelector(valeur_token)
+    const utilisateur_select = useSelector(utilisateur_selectionner);
+
+    function deconnection() {
+        const dispatch = useDispatch()
+        dispatch(emptyToken)
+        dispatch(emptyUtilisateur)
+        location.replace("/")
+    }
+
+    if (val_token !== "") {
         return (
             <nav className="main-nav">
                 <Link className="main-nav-logo" to="/">
@@ -16,12 +28,12 @@ function Header(props) {
                 <div>
                     <Link className="main-nav-item" to="/profile/1">
                         <i className="fa fa-user-circle"></i>
-                        Tony
+                        {utilisateur_select[0] }
                     </Link>
-                    <Link className="main-nav-item" to="/">
+                    <button className="main-nav-item" onClick={deconnection}>
                         <i className="fa fa-sign-out"></i>
                         Sign Out
-                    </Link>
+                    </button>
                 </div>
             </nav>
         )
