@@ -12,6 +12,7 @@ import { setToken } from '../features/token/token'
 function Sign() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const dispatch = useDispatch()
 
     function changeUsername(e) {
         setUsername(e.target.value);
@@ -29,13 +30,13 @@ function Sign() {
        const res = await login(data);
        console.log(res)
        if (res.status == 200) {
-        ajt_token(res)
+        ajt_token(res.body.token)
            location.replace("/profile")
        }
      
     }
     function ajt_token(token) {
-        const dispatch = useDispatch()
+      console.log("token:"+token)
         dispatch(setToken(token));
     }
 

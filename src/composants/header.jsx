@@ -1,22 +1,27 @@
 ﻿import Logo from "../assets/argentBankLogo.png"
 import { Link } from 'react-router-dom'
 import React from 'react'
-import { emptyToken, valeur_token } from '../features/token/token'
-import { utilisateur_selectionner, emptyUtilisateur } from '../features/utilisateurs/utilisateurs';
+import { emptyToken } from '../features/token/token'
+import {  emptyUtilisateur, prenom, nom} from '../features/utilisateurs/utilisateurs';
 import { useDispatch,useSelector } from "react-redux";
 
 function Header() {
-    const val_token=useSelector(valeur_token)
-    const utilisateur_select = useSelector(utilisateur_selectionner);
+  //  const val_token = useSelector(valeur_token);
+    const dispatch = useDispatch()
+ //   console.log(val_token)
+    const firstName = useSelector(prenom);
+    const lastName = useSelector(nom);
+
+    console.log("prenom:"+firstName+" nom:"+lastName)
 
     function deconnection() {
-        const dispatch = useDispatch()
+       
         dispatch(emptyToken)
         dispatch(emptyUtilisateur)
         location.replace("/")
     }
 
-    if (val_token !== "") {
+   /* if (!val_token) {
         return (
             <nav className="main-nav">
                 <Link className="main-nav-logo" to="/">
@@ -28,7 +33,7 @@ function Header() {
                 <div>
                     <Link className="main-nav-item" to="/profile/1">
                         <i className="fa fa-user-circle"></i>
-                        {utilisateur_select[0] }
+                        {firstName }
                     </Link>
                     <button className="main-nav-item" onClick={deconnection}>
                         <i className="fa fa-sign-out"></i>
@@ -37,7 +42,7 @@ function Header() {
                 </div>
             </nav>
         )
-    } else {
+    } else {*/
         return (
             <nav className="main-nav">
                 <Link className="main-nav-logo" to="/" >
@@ -55,6 +60,6 @@ function Header() {
             </nav>
         )
     }
-}
+//}
 
 export default Header
