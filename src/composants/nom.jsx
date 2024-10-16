@@ -1,7 +1,7 @@
 ﻿import React, { useState } from 'react'
 import { useSelector,useDispatch } from 'react-redux'
 import { prenom, nom, setUtilisateur } from '../features/utilisateurs/utilisateurs';
-import { } from '../features/token/token';
+import {valeur_token } from '../features/token/token';
 
 
 
@@ -12,7 +12,7 @@ function Nom(props) {
     const lastName = useSelector(nom);
     const [firstname, setfirstname] = useState("");
     const [lastname, setlastname] = useState("");
-    const val_token = useSelector((state)=>state.token.token);
+    const val_token = useSelector(valeur_token);
 
     console.log("val_token:"+val_token)
     function changefirstname(e) {
