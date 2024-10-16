@@ -8,6 +8,7 @@ import reportWebVitals from './reportWebVitals';
 import './index.css';
 import Page_sign_in from "./pages/sign-in"
 import Page_user from "./pages/user"
+import Page_transaction from "./pages/transaction"
 
 const container = document.getElementById('root');
 const root = createRoot(container);
@@ -22,7 +23,8 @@ root.render(
                 <Routes>
                     <Route path="/" element={<App />} />
                     <Route path="/login" element={<Page_sign_in/> } />
-                    <Route path="/profile" element={<Page_user/> } />
+                    <Route path="/profile" element={<Page_user />} />
+                    <Route path="/profile/transaction" element={<Page_transaction />} />
                 </Routes>
             </Router>
      
