@@ -4,7 +4,7 @@ import Transaction from "./transaction"
 
 //  const { date, description, amount,balance,type,categorie,notes }
 
-function List_transaction () {
+function List_transaction() {
     return (
         <div id="list_transaction">
             <Transaction date="June 20th,2020" description="Golden Sun Bakery" amount="$5" balance="$2082,79" type="Electronic" categorie="Food" note="" />
@@ -14,7 +14,7 @@ function List_transaction () {
             <Transaction date="June 20th,2020" description="Golden Sun Bakery" amount="$40" balance="$2147,79" type="Electronic" categorie="Food" note="" />
             <Transaction date="June 20th,2020" description="Golden Sun Bakery" amount="$50" balance="$2187,79" type="Electronic" categorie="Food" note="" />
         </div>
-       
+
     )
 
 }

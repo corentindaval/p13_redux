@@ -16,3 +16,21 @@ export async function login(infos) {
     }
     return response
 }
+
+export async function profile(token) {
+    let response;
+    try {
+        response = await fetch('http://localhost:3001/api/v1/user/profile', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization':token
+
+            }
+        })
+            .then(data => data.json())
+    } catch (err) {
+        console.log(err)
+    }
+    return response
+}

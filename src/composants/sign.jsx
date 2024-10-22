@@ -1,18 +1,21 @@
 ﻿import React, { useState} from 'react'
-import { Link } from 'react-router-dom'
-import {login }from "./interaction"
+import { useNavigate} from 'react-router-dom'
+import {login,profile }from "./interaction"
 import { useDispatch,useSelector } from 'react-redux'
 import { isEmpty } from "./utils"
 import { setToken } from '../features/token/token'
 
 
 
+
 //const items = useSelector(selectItems)
 
 function Sign() {
+
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const dispatch = useDispatch()
+    const navigate=useNavigate()
 
     function changeUsername(e) {
         setUsername(e.target.value);
@@ -30,8 +33,15 @@ function Sign() {
        const res = await login(data);
        console.log(res)
        if (res.status == 200) {
-        ajt_token(res.body.token)
-           location.replace("/profile")
+           ajt_token(res.body.token)
+           const datap = {
+               "token":res.body.token,
+               }
+           const resp = await profile(datap);
+        
+               console.log("id:"+resp.body.id)
+           
+           navigate("/profile")
        }
      
     }

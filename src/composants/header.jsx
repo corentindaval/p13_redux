@@ -1,5 +1,5 @@
 ﻿import Logo from "../assets/argentBankLogo.png"
-import { Link } from 'react-router-dom'
+import { useNavigate,Link } from 'react-router-dom'
 import React from 'react'
 import { emptyToken } from '../features/token/token'
 import {  emptyUtilisateur, prenom, nom} from '../features/utilisateurs/utilisateurs';
@@ -15,10 +15,10 @@ function Header() {
     console.log("prenom:"+firstName+" nom:"+lastName)
 
     function deconnection() {
-       
+       const navigate=useNavigate()
         dispatch(emptyToken)
         dispatch(emptyUtilisateur)
-        location.replace("/")
+       navigate("/")
     }
 
    /* if (!val_token) {

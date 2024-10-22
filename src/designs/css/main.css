@@ -17,6 +17,26 @@ body {
     flex: 1;
 }
 
+.transaction{
+    display:flex;
+    flex-direction:column;
+}
+
+.resumer{
+    display:flex;
+    flex-direction:row;
+}
+
+.detail{
+    display:flex;
+    flex-direction:column;
+}
+
+.s_categorie{
+    display:flex;
+    flex-direction:row;
+}
+
 .bg-dark {
     background-color: #12002b;
 }
