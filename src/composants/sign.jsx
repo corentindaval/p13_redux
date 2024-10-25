@@ -34,12 +34,8 @@ function Sign() {
        console.log(res)
        if (res.status == 200) {
            ajt_token(res.body.token)
-           const datap = {
-               "token":res.body.token,
-               }
-           const resp = await profile(datap);
+ 
         
-               console.log("id:"+resp.body.id)
            
            navigate("/profile")
        }

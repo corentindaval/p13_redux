@@ -14,6 +14,12 @@ function Nom(props) {
     const [lastname, setlastname] = useState("");
     const val_token = useSelector(valeur_token);
 
+    async function recup_profile() {
+        const resp = await profile(val_token);
+        console.log(resp)
+    }
+    recup_profile();
+
     console.log("val_token:"+val_token)
     function changefirstname(e) {
         setfirstname(e.target.value);
