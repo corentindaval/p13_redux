@@ -34,3 +34,11 @@ export async function profile(token) {
     }
     return response
 }
+
+
+export async function maj_profile(maj) {
+    const val_nom = maj[1];
+    const val_prenom = maj[0];
+
+
+}

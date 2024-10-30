@@ -6,43 +6,38 @@ import {  emptyUtilisateur, prenom, nom} from '../features/utilisateurs/utilisat
 import { useDispatch,useSelector } from "react-redux";
 
 function Header() {
-  //  const val_token = useSelector(valeur_token);
     const dispatch = useDispatch()
- //   console.log(val_token)
-    const firstName = useSelector(prenom);
-    const lastName = useSelector(nom);
+    const val_token = useSelector((state) => state.Token.token);
+    const val_prenom = useSelector((state) => state.Utilisateur.prenom);
+    const val_nom = useSelector((state) => state.Utilisateur.nom);
+    const navigate = useNavigate()
 
-    console.log("prenom:"+firstName+" nom:"+lastName)
 
     function deconnection() {
-       const navigate=useNavigate()
-        dispatch(emptyToken)
-        dispatch(emptyUtilisateur)
+      
+        dispatch(emptyToken())
+        dispatch(emptyUtilisateur())
        navigate("/")
     }
-
-   /* if (!val_token) {
+    if (val_token != "") {
         return (
             <nav className="main-nav">
-                <Link className="main-nav-logo" to="/">
+                <Link className="main-nav-logo" to="/" >
                     <img className="main-nav-logo-image"
-                        src={Logo }
+                        src={Logo}
                         alt="Argent Bank Logo" />
                     <h1 className="sr-only">Argent Bank</h1>
                 </Link>
-                <div>
-                    <Link className="main-nav-item" to="/profile/1">
+                <div id="deco">
+                    <Link to="/profile">{val_prenom }</Link>
+                    <button className="main-nav-item dec" onClick={deconnection }>
                         <i className="fa fa-user-circle"></i>
-                        {firstName }
-                    </Link>
-                    <button className="main-nav-item" onClick={deconnection}>
-                        <i className="fa fa-sign-out"></i>
-                        Sign Out
+                        Sign out
                     </button>
                 </div>
             </nav>
         )
-    } else {*/
+    } else {
         return (
             <nav className="main-nav">
                 <Link className="main-nav-logo" to="/" >
@@ -59,6 +54,11 @@ function Header() {
                 </div>
             </nav>
         )
+    }
+
+
+
+
     }
 //}
 

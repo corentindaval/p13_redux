@@ -1,9 +1,16 @@
 ﻿import React from 'react'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 //const items = useSelector(selectItems)
 
 function Compte(props) {
     const { nom_compte,montant,description } = props;
+    const navigate = useNavigate()
+
+    function vue_transaction() {
+        navigate("/profile/transaction")
+
+    }
 
     return (
         <section className="account">
@@ -13,7 +20,7 @@ function Compte(props) {
                 <p className="account-amount-description">{description}</p>
             </div>
             <div className="account-content-wrapper cta">
-                <button className="transaction-button">View transactions</button>
+                <button className="transaction-button" onClick={vue_transaction}>View transactions</button>
             </div>
         </section>
     )

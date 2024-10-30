@@ -9,9 +9,11 @@ export const utilisateur = createSlice({
         nom:"",
     },
     reducers: {
-        setUtilisateur: (state, action) => {
-            state.prenom = action.payload.prenom
-            state.nom=action.payload.nom
+        setPrenom: (state, action) => {
+            state.prenom = action.payload
+        },
+        setNom: (state, action) => {
+            state.nom = action.payload
         },
         emptyUtilisateur: (state) => {
             state.prenom = "",
@@ -20,7 +22,7 @@ export const utilisateur = createSlice({
     }
 })
 
-export const { setUtilisateur, emptyUtilisateur } = utilisateur.actions
+export const { setPrenom,setNom, emptyUtilisateur } = utilisateur.actions
 
 export const prenom = (state) => state.prenom
 export const nom = (state) => state.nom

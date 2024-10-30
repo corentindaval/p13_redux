@@ -6,13 +6,15 @@ import User from "../composants/user"
 
 
 function Page_user() {
-    return (
-        <div>
-            <Header />
-            <User/>
-            <Footer />
-        </div>
-    )
+        return (
+            <div>
+                <Header />
+                <User />
+                <Footer />
+            </div>
+        )
+   
+   
 
 }
 

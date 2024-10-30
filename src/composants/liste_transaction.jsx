@@ -7,6 +7,7 @@ import Transaction from "./transaction"
 function List_transaction() {
     return (
         <div id="list_transaction">
+            <div id="description"><p>date</p><p>description</p><p>amount</p><p>balance</p></div>
             <Transaction date="June 20th,2020" description="Golden Sun Bakery" amount="$5" balance="$2082,79" type="Electronic" categorie="Food" note="" />
             <Transaction date="June 20th,2020" description="Golden Sun Bakery" amount="$10" balance="$2087,79" type="Electronic" categorie="Food" note="" />
             <Transaction date="June 20th,2020" description="Golden Sun Bakery" amount="$20" balance="$2097,79" type="Electronic" categorie="Food" note="" />
