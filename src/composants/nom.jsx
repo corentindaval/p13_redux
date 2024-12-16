@@ -17,7 +17,7 @@ function Nom(props) {
 
     async function recup_profile() {
         const resp = await profile(val_token);
-        console.log(resp)
+        console.log("resp: "+resp)
         dispatch(setPrenom(resp.body.firstName));
         dispatch(setNom(resp.body.lastName));
         console.log("nom:"+val_nom+" prenom:"+val_prenom)
@@ -40,11 +40,12 @@ function Nom(props) {
         }
     }
 
-    function maj_nom() {
+   async function maj_nom() {
+    
+        const data_save=[firstname,lastname]
+       await maj_profile(data_save, val_token);
         dispatch(setPrenom(firstname));
         dispatch(setNom(lastname));
-        const data_save=[firstname,lastname]
-       //  maj_profile(data_save);
         maj();
     }
 
